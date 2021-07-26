@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300;1,900&display=swap');
+
+
+
+.home__intro{
+  font-size: x-large;
+  font-family: 'Roboto', sans-serif;
+  /* font-size: 9px; */
+  font-weight: bolder;
+  color: #240C40;
+}
+.home__intro .btn{
+  background-color: blueviolet;
+  outline: blueviolet;
+  border: blueviolet;
+}
+
+.image img{
+  image-rendering: optimizeQuality;
+  image-orientation: flip;
+  transform: scale(1.3);
+  margin-top: 2rem;
+}
+
+
+
+/* ==============================feature====================== */
+.card-img-top {
+  width: 100%;
+  min-height: 7vw;
+  object-fit: cover;
+}
+
+
+.card:hover{
+  transform: scale(1.1);
+  transition: all .3s;
+}
+
+.customer{
+  font-size: large;
+  font-style: italic;
+}
+
+.feature{
+  font-size: larger;
+  font-family: 'Roboto', sans-serif;
+  color: #240C40;
+}
+
+/* =====================================appp view======================== */
+.imgContainer{
+  transform: scale(1);
+  z-index: 2;
+}
+.app-img{
+  position: absolute;
+  /* object-fit: contain; */
+  left: 3.64rem;
+  top: 1rem;
+  width: 13rem;
+  height: 8rem;
+  z-index: 1;
+}
+.privacy{
+  position: relative;
+}
+
+.note{
+  font-size: xx-large;
+  font-weight: bolder;
+  color: #240C40;
+}
+.notesub{
+  font-size:large;
+  font-weight: bolder;
+  color: #240C40;
+}
+#privacy{
+  background-image: linear-gradient(#ccc, #e1c6ff);
+}
+
+
+
+/* =============footer============================ */
+.head{
+  color: #682bad;
+  font-style:normal;
+  font-weight:bolder;
+  font-size: larger;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.snap{
+  color: #682bad;
+  font-weight:bolder;
+  font-size: x-large;
+  font-style: italic;
+  /* font-family: Verdana, Geneva, Tahoma, sans-seri  f; */
+}
+
+a{
+  text-decoration: none;
+  color: #a987d1;
+}
+.fab{
+  color: #240C40;
+  font-size: large;
+}
+.fab:hover{
+  color: #682bad;
+  transform: scale(1.1);
+}
+.imgg{
+  margin: 0 auto;
+}
+
+@media screen and (max-width:887px){
+  .imgg{
+    /* margin: 0 auto; */
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  #respImg{
+    width: 90%;
+  }
+
+  .privacy{
+    position: relative;
+    margin-left: -20px;
+  }
+}
+

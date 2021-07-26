@@ -1,0 +1,10 @@
+.wallet{
+  /* object-fit: contain; */
+  max-width: 40vw;
+  height: 75vh;
+  margin-left: -4rem
+}
+
+.sign{
+  cursor: pointer;
+}

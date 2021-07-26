@@ -1,0 +1,774 @@
+.display{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+  height: 100vh;
+  transition: all .5s ease-in-out;
+}
+
+.template{
+  background-color: #DBE0E6;
+  width: 95vw;
+  height: 95vh;
+  display: flex;
+  overflow: hidden;
+  padding: 1.5rem 1.5rem 1.5rem 0;
+  border-radius: 1rem;
+  border: 2px solid rgb(136, 134, 134);
+  transition: all .5s ease-in-out;
+}
+
+/* ===============side nav========================= */
+.side__nav{
+  flex-basis: 13%;
+  border-radius: 10px 10px 10px 10px;
+  background-color: whitesmoke;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 4px solid #ddd; */
+  transition: all .5s ease-in-out;
+}
+
+.side__nav__transact div{
+  background-color: rgb(255, 255, 255);
+}
+.side__nav__transact div:hover{
+  background-color: #444;
+  color: #fff;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+.side__nav__transact div:active{
+  background-color: #444;
+  color: #fff;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+}
+
+#bank__name{
+  font-weight: bolder;
+  font-size: large;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+}
+#bank__name i{
+  display: none;
+}
+.switch{
+  font-size: x-large;
+}
+.switch:hover{
+  color: rgb(61, 238, 61);
+}
+
+.request{
+  display:none;
+}
+
+
+
+
+
+
+
+
+
+
+.app__view{
+  flex-basis: 85%;
+  width: 80vw;
+  border-radius: 0 10px 10px 0;
+  overflow: hidden;
+  padding-left: 1rem;
+}
+
+.header{
+  display: flex;
+}
+.name{
+  font-style: italic;
+  font-size: .7rem;
+}
+.dashboard{
+  font-weight: bolder;
+  font-size: 1.3rem;
+  margin-top: -2px;
+}
+.introduction{
+  flex-basis: 33%;
+}
+
+.header__input{
+  width: 15rem;
+  background-color: white;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  height: 2rem;
+  padding: .4rem;
+  padding-left: 2rem;
+  margin-top: 5px;;
+}
+
+
+#header__search{
+  position: relative;
+  flex-basis: 45%;
+
+}
+.fa-search{
+  position: absolute;
+  top: 14px;
+  left: 10px;
+  color: rgb(121, 116, 116);
+}
+
+.fa-envelope-open-text{
+  margin-right: 5px;
+  align-self: center;
+  padding: 2px;
+}
+.fa-bell{
+  margin-right: 5px;
+  align-self: center;
+  margin-left: 5px;
+}
+.fa-user-circle{
+  font-size: x-large;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.userName{
+  margin-right: 5px;
+}
+
+.header__personal{
+  flex-basis: 40%;
+  color:rgb(83, 82, 82);
+  padding-top: 10px;
+ 
+}
+#personal__flex{
+  display: flex;
+  justify-content: flex-end;
+}
+#message{
+  color: rgb(245, 88, 88);
+  font-family: 'Times New Roman', Times, serif;
+  padding: 1px;
+  border-radius: 30%;
+}
+
+
+/* ======================card info ======================= */
+.wallet__info{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+.cad__view{
+  min-width:18rem;
+  height: 10rem;
+  background-color: white;
+  border-radius: .8rem;
+  position: relative;
+  padding-right: 5px;
+  margin-right: 20px;
+  transition: all .5s ease-in-out;
+}
+#visa{
+  position: absolute;
+  right: 8px;
+  top: 5px
+}
+#card{
+  position: absolute;
+  right: 90px;
+  top: 105px
+}
+
+#card__pad{
+  padding-left: 10px;
+  padding-top: .8rem;
+}
+
+#card__pad span{
+  font-weight: bold;
+}
+
+#card__pad .balance{
+  margin-top: 1rem;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+#card__pad .account{
+  margin-top: .1rem;
+  font-size: large;
+  font-weight: bolder;
+  color: dimgray;
+}
+
+
+
+/* =================request view ========================= */
+.request__view{
+  min-width:23rem;
+  height: 10rem;
+  background-color: white;
+  border-radius: .8rem;
+  position: relative;
+  padding-right: 5px;
+  margin-right: 5px;
+  transition: all .5s ease-in-out;
+}
+
+#users__view{
+  overflow-x: auto;
+  display: flex;
+  overflow-y: hidden;
+  flex-direction:row;
+  white-space: nowrap;
+  max-height: 2.9rem;
+  max-width: 27rem;
+  margin-bottom: 2px;
+}
+
+#users__view::-webkit-scrollbar{
+  /* display: none; */
+  height: 5px;
+  margin-top: 2px;
+  background-color: rgb(221, 218, 218);
+}
+
+.eachUser{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(226, 220, 220);
+  padding: .2px 3px;
+  border-radius: 5px;
+  border: 1px solid rgb(216, 173, 173);
+  transition: all .5s ease-in-out;
+}
+.eachUser:hover{
+  cursor: pointer;
+}
+
+
+
+/* ========================wallet=========================== */
+.add__wallet{
+  width: 8rem;
+  height: 6rem;
+  background-color: honeydew;
+  border: 2px dashed #444;
+  position: relative;
+}
+
+.add__wallet #add{
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bolder;
+  position: absolute;
+  top: 22%;
+  left: 40%;
+}
+
+.add__wallet:hover{
+  transform:scale(1.1);
+  background-color: rgb(155, 185, 155);
+  color: beige;
+  border-color: #ccc;
+  cursor: pointer;
+}
+
+
+.wallet__view{
+  max-width: 60rem;
+  height: 6rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  background-color: rgb(229, 221, 236);
+  margin-right: 1rem;
+  padding: 1px 0 7px 1px
+}
+
+.wallet__view::-webkit-scrollbar{
+  background-color: rgb(151, 151, 156);
+  height: 3px;
+}
+
+
+.wallet__view .each__wallet{
+  min-width: 8rem;
+  height: 6rem;
+  background:#fff;
+  border-radius: 0px 30%  0 0;
+  margin-right: 1rem;
+  position: relative;
+  margin-bottom: 2px;
+}
+
+
+.absolute{
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  color: #ccc;
+}
+.wallet__name{
+  color: rgb(147, 79, 211);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  background-color: rgb(191, 147, 231);
+  border-radius: 0px 20%  0 0;
+  padding: 2px 4px;
+  margin: 18px 0 2px 1px;
+  width: fit-content;
+}
+
+.wallet__amount{
+  margin-top: 12%;
+  font-style: oblique;
+  font-family: cursive;
+  padding: 2px;
+}
+
+
+
+
+/* =================================history====================== */
+.history__view{
+  border: 4px solid rgb(238, 236, 236);
+  width: 40rem;
+  height: 15.2rem;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 4px 0 0 4px;
+  margin-right: 1rem;
+  transition: all .5s ease-in-out;
+}
+.history__pad{
+  width: 100%;
+  height: 70%;
+  padding: 2px 0 0 5px;
+  font-family: Verdana, sans-serif;
+  font-style: italic;
+  font-size: small;
+  overflow-y: auto;
+}
+
+.message__view{
+  border: 4px solid rgb(238, 236, 236);
+  width: 32rem;
+  height: 15.2rem;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 4px 0 0 4px;
+  margin-right: 1rem;
+  transition: all .5s ease-in-out;
+}
+
+.message__pad{
+  width: 100%;
+  height: 72%;
+  padding: 2px 0 0 10px;
+  font-family: Verdana, sans-serif;
+  font-style: italic;
+  font-size: small;
+  overflow-y: auto;
+}
+
+/* .fa-toggle-on:hover{
+
+} */
+
+#error{
+position: fixed;
+top: 9%;
+left: 50%;
+}
+
+#success{
+  position: fixed;
+  top: 9%;
+  left:40%;
+}
+
+.wallet{
+  display: flex;
+  flex-direction: row;
+}
+
+.relative{
+  position: relative;
+  padding: 4px;
+}
+.absolute{
+  position: absolute;
+}
+
+.absolute:hover{
+  color: red;
+}
+
+
+.fa-times{
+  cursor: pointer;
+}
+#template__row{
+  display: none;
+}
+
+.toggle__history{
+  display: none;
+}
+
+
+
+/* ================================RESPONSIVENESS============================== */
+@media screen and (max-width:887px){
+
+  .display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0rem;
+    height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    position: relative;
+    transition: all .5s ease-in-out;
+  }
+  .template{
+    background-color: #DBE0E6;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    padding-right: 0px;
+    flex-direction: column;
+    
+    overflow: hidden;
+    position: relative;
+    
+    /* padding: 1.5rem 1.5rem 0rem 0; */
+    border-radius: .5rem;
+    border: 2px solid rgb(136, 134, 134);
+    transition: all .5s ease-in-out;
+  }
+
+  .side__nav{
+    flex-basis: 0%;
+    border-radius: 10px 10px 10px 10px;
+    background-color: whitesmoke;
+    padding: 4px;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    height: 80%;
+    width: 50%;
+    right:2.3%;
+    z-index: 100;
+    display: none;
+    transition: all .5s ease-in-out;
+  }
+
+  .app__view{
+    flex-basis: 100%;
+    width: 100%;
+    height: 80%;
+    border-radius: 0 10px 10px 0;
+    padding: 0;
+    /* display: flex;
+    flex-direction: column; */
+   
+   
+  }
+
+  .side__nav__open{
+    display: flex;
+  }
+  .side__nav__close{
+    display: none;
+  }
+  #bank__name i{
+    display: block;
+  }
+
+  #bank__name{
+    margin-left: 2px;
+  }
+
+  .name{
+    margin-left: 2px;
+  }
+
+  #template__row{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4px;
+  }
+
+  #template__row #bankName{
+    font-size: large;
+    font-style: italic;
+    font-weight: bolder;
+  }
+  .fa-stream:hover{
+    color: blueviolet;
+  }
+  
+  #template__row #toggleNav:hover{
+   color: red;
+   transform: rotate(270deg);
+  }
+
+  .dashboard{
+   display: none;
+  }
+
+  #header__search{
+    display: none;
+  }
+  #head__search{
+    position: relative;
+    flex-basis: 45%;
+  }
+  #head__search input{
+    background-color: rgb(164, 209, 209);
+  }
+
+  .header__personal{
+    display: none;
+  }
+
+  .request__view{
+    display: none;
+  }
+
+  /* .cad__view{
+    min-width:25rem;
+    height: 12rem;
+    background-color: white;
+    border-radius: .8rem;
+    position: relative;
+    padding-right: 5px;
+    margin-right: 20px;
+    transition: all .5s ease-in-out;
+  } */
+
+
+  /* ===================request view======================== */
+  #users__view{
+    overflow-x: auto;
+    display: flex;
+    overflow-y: hidden;
+    flex-direction: row;
+    white-space: nowrap;
+    max-height: 3.5rem;
+    max-width: 27rem;
+    margin-bottom: 2px;
+  }
+
+  #card__pad .account{
+    margin-top: 2rem;
+    margin-left: 2rem;
+    font-size: large;
+    font-weight: bolder;
+    color: dimgray;
+  }
+
+  #cad__view{
+    margin-left: 0.3rem;
+  }
+  .cad__view{
+    min-width:18.6rem;
+    height: 10rem;
+    background-color: white;
+    border-radius: .8rem;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    transition: all .5s ease-in-out;
+  }
+  #card{
+    position: absolute;
+    right: 90px;
+    top: 140px
+  }
+
+  .request{
+    display:block;
+  }
+  
+
+
+
+
+  /* wallet */
+
+  
+  .wallet__info{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    padding: 0;
+    margin-right:20px;
+    align-self: stretch;
+  }
+  
+  .wallet__view{
+    max-width: 17rem;
+    height: 6rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    background-color: rgb(229, 221, 236);
+    margin-right: 1rem;
+
+    padding: 1px 0 7px 1px
+  }
+
+  .toggle__history{
+    display: flex;
+    justify-content:center;
+    margin-top: 2rem;
+    margin-left: -30px;
+  }
+
+
+  .history__view{
+    border: 4px solid rgb(238, 236, 236);
+    width: 100rem;
+    height: 20rem;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 4px 0 0 4px;
+    margin-right: 1rem;
+    transition: all .5s ease-in-out;
+  }
+  .history__pad{
+    width: 100%;
+    height: 80%;
+    padding: 2px 0 0 15px;
+    font-family: Verdana, sans-serif;
+    font-style: italic;
+    font-size: small;
+    overflow-y: auto;
+    background-color: #444;
+  }
+
+  #messag{
+    background-color: blueviolet;
+    position: relative;
+    color: rgb(237, 226, 226);
+  }
+
+  #histor{
+    color: rgb(237, 226, 226);
+    margin-left: 2px;
+    background-color: blueviolet;
+    position: relative;
+    margin-right: .5rem;
+  }
+  
+  .message__view{
+    border: 4px solid rgb(238, 236, 236);
+    width: 100%;
+    height: 15.2rem;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 4px 0 0 4px;
+    margin-right: 0rem;
+    transition: all .5s ease-in-out;
+  }
+
+  .notice{
+    width: 100%;
+    margin-left: 0px;
+  }
+  
+  .message__pad{
+    width: 100%;
+    height: 72%;
+    padding: 2px 0 0 10px;
+    font-family: Verdana, sans-serif;
+    font-style: italic;
+    font-size: small;
+    overflow-y: auto;
+  }
+
+  #message__view{
+    display: none;
+  }
+
+  .history__view{
+    border: 4px solid rgb(238, 233, 233);
+    width: 95%;
+    height: 40rem;
+    align-self: center;
+    background-color: #DBE0E6;
+    border-radius: 5px;
+    padding: 4px 0 0 4px;
+    margin: 0 auto;
+    transition: all .5s ease-in-out;
+  }
+
+  .history__pad{
+    width: 100%;
+    height: 45%;
+    padding: 2px 0 0 5px;
+    font-family: Verdana, sans-serif;
+    font-style: italic;
+    font-size: small;
+    overflow-y: auto;
+  }
+
+  .trans{
+    display: none;
+  }
+
+  .each__history{
+    background-color: #ebf0f5;
+    margin-top: 5rem;
+    padding: 2rem;
+  }
+
+
+  .boder{
+    border-bottom: 4px solid rgb(220, 150, 230);
+  }
+  
+  .message__pad{
+    width: 100%;
+    height: 80%;
+    padding: 2px 0 0 0px;
+    font-family: Verdana, sans-serif;
+    font-style: italic;
+    font-size: small;
+    overflow-y: auto;
+  }
+
+  .message {
+    display: none;
+  }
+
+  .each__message{
+    background-color: #ebf0f5;
+    margin-top: 5rem;
+    padding: 1rem;
+  }
+
+
+}

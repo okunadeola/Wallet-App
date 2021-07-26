@@ -1,0 +1,356 @@
+<div class="container-fluid  display " id="container-fluid">
+  <div class="template" id="template">
+    <div id="template__row">
+      <div id="bankName">Snap Wallet</div><div id="toggleNav" (click)="toggleNav()"><i id="stream" class="fa fa-stream "></i></div>
+    </div>
+    <div id="sideNav" class="side__nav">
+      <div id="bank__name">Snap Wallet <i (click)="toggleNavOff()" class="fa fa-stream float-end"></i></div>
+      <div class="side__nav__transact">
+        <div class="my-2 py-2 tab"  data-bs-toggle="modal" data-bs-target="#deposit" (click)="depositAccont()"><i class="fa fa-wallet mx-2"></i>Deposit</div>
+        <div class="my-2 py-2 tab " data-bs-toggle="modal" data-bs-target="#transfer"><i class="fa fa-arrow-alt-circle-up mx-2"></i>Transfer</div>
+        <div class="my-2 py-2 tab request" data-bs-toggle="modal" data-bs-target="#request"><i class="fa fa-money-bill-alt mx-2"></i>Request</div>
+      </div>
+      <div id="switch" class="switch" title="dark mode" (click)="toggle()" ><i class="fa fa-toggle-on"></i></div>
+      
+      <div id="logout" (click)="logout()" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-left mx-1"></i>Logout</div>
+    </div>
+
+    <div class="app__view" >
+      <div class="header">
+ 
+        <div class="introduction">
+          <span class="name text-muted">welcome {{user.fullname | uppercase}} </span>
+          <div class="dashboard text-muted">Dashboard</div>
+        </div>
+
+        <div id="header__search">
+          <i class="fa fa-search" (click)="search()"></i>
+          <input type="text" placeholder="search for user" (keyup)="default()" class="header__input" [(ngModel)]="searchInput">
+        </div>
+
+        <div class="header__personal">
+          <div id="personal__flex">
+            <i class="fa fa-envelope-open-text"><sup id="message">{{userMessage.length ? userMessage.length : ''}}</sup></i>
+            <i class="fa fa-user-circle"></i>
+            <div>
+              <span class="userName">{{user.username}}</span>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <div class="wallet__info">
+
+        <div class="cad__view" id="cad__view">
+          <img src="/assets/img/visa.PNG" id="visa" alt="">
+          <div id="card__pad">
+            <div><span>Visa</span> <div class="balance"  [style]="user.balance > 1000000 ?{fontSize: '.8rem'}: {fontSize: 'xx-large'}">{{user.balance | currency:'NGN':'symbol-narrow' }}</div> </div>
+            <div class="account">{{user.account.toString().slice(0,3)}}-{{user.account.toString().slice(3,6)}}-{{user.account.toString().slice(6,10)}}</div>
+            <img src="/assets/img/card.PNG" id="card" alt="">
+            <!-- [style]="user.balance >= 20000 ? {color:'green'}: {color: 'red'}" -->
+          </div>
+        </div>
+
+
+        <div class="request__view" id="request__view">
+          <div class="mx-3 w-50 my-1"><i class="fa fa-money-bill-alt"></i> Snap Request</div>
+          <div class="alert alert-sm alert-danger" id="error" *ngIf="error">{{error}}  <div class="float-end alert-delete" (click)="removeAlert()"><i class="fa fa-times"></i></div></div>
+          <div class="alert alert-sm alert-success" id="success" *ngIf="success">{{success}}</div>
+          <div id="users__view" class="mx-2">
+            <div class="eachUser mx-1" (click)="snapRequest(user)" *ngFor="let user of otherUser; let i =index">
+              <a  class="user__card" title="{{user.balance | currency:'NGN':'symbol-narrow'}}"><i class="fa fa-user-circle"></i></a>
+              <div>{{user.username}}</div>
+            </div>
+          </div>
+          <div>
+            <div id="request__input" class="row my-1 mx-2">
+              <div class="col-6">
+                <input type="number" class="form-control form-control-sm" [(ngModel)]="acctInput" placeholder="enter account number">
+                <input type="number" class="my-1 form-control form-control-sm" [(ngModel)]="amountInput" placeholder="enter amount">
+              </div>
+              <div class="col-6">
+                <input type="password" class="form-control form-control-sm" [(ngModel)]="passwordInput" placeholder="confirm password">
+                <button class="my-1 btn btn-sm btn-success" (click)="requestMoney()">Request Money</button>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+
+      </div>
+     
+      
+     <!-- ============================ADD WALLET================================ -->
+      <div class="wallet__info">
+        <div class="wallet__view">
+          <div class="each__wallet" *ngFor=" let wallet of userWallets; let i=index">
+            <div class="wallet__amount text-muted">{{wallet.walletAmount | currency:'NGN':'symbol-narrow'}}</div>
+              <i class="fa fa-times absolute" (click)="deleteWallet(wallet, i)" title="delete"></i> 
+            <div class="wallet__name">{{wallet.walletName}}</div>
+          </div>
+        </div>        
+        <div class="add__wallet" title="add New Wallet" data-bs-toggle="modal" data-bs-target="#example">
+          <div id="add">+</div>
+        </div>
+      </div>
+
+
+
+      <!-- ==========================HISTORY============================================= -->
+     
+        <div class="row my-3 toggle__history">
+          <div class="col-4 p-0 boder" id="histor" (click)="toggleHistory()">
+            <span>
+              Transactions({{userHistory.length ? userHistory.length: ''}})
+            </span>
+          </div>
+          <div class="col-4 p-0" id="messag" (click)="toggleNotice()">
+            <span>
+            Notification({{userMessage.length ? userMessage.length: ''}})
+
+            </span>
+          </div>
+        </div>
+      <div class="wallet__info notice" id="wallet__info" >
+        <div class="history__view" id="history__view">
+          <div class="btn btn-light btn-sm btn-block trans">Transactions ({{userHistory.length ? userHistory.length: ''}})</div>
+          <div class="history__pad bg-light">
+            <div *ngFor="let history of userHistory; let i=index">
+              <div class="text-muted my-3 each__history" *ngIf="history.topic === 'moneyRequest' ">
+                you requested {{history.amount | currency:'NGN':'symbol-narrow'}} from  account number -{{history.to}}  <span class="float-end">--{{(history.date | timeago).includes('second') ? 'Just now' : history.date | timeago }}</span>
+              </div>
+              <div class="text-muted my-3 each__history" *ngIf="history.topic === 'depositMoney' ">
+                you deposited <span class="text-success">{{history.amount | currency:'NGN':'symbol-narrow'}}</span> to your account <span class="float-end">--{{(history.date | timeago).includes('second') ? 'Just now' : history.date | timeago }}</span>
+              </div>
+              <div class="text-muted my-3 each__history" *ngIf="history.topic === 'moneyTransfer' ">
+                you transfered <span class="text-danger">{{history.amount | currency:'NGN':'symbol-narrow'}}</span> to account number-{{history.to}} <span class="float-end">--{{(history.date | timeago).includes('second') ? 'Just now' : history.date | timeago }}</span>
+              </div>
+              <div class="text-muted my-3 each__history" *ngIf="history.topic === 'transferedMoney' ">
+                you received <span class="text-success">{{history.amount | currency:'NGN':'symbol-narrow'}}</span> from  account-{{history.from}} <span class="float-end">--{{(history.date | timeago).includes('second') ? 'Just now' : history.date | timeago }}</span>
+              </div>
+              <div class="text-muted my-3 each__history" *ngIf="history.topic === 'transferRequestRejected' ">
+                you rejected a money request of {{history.amount | currency:'NGN':'symbol-narrow'}} from {{history.to}} with account number -{{history.account}} <span class="float-end">--{{(history.date | timeago).includes('second') ? 'Just now' : history.date | timeago }}</span>
+              </div>
+              <div class="text-muted my-3 each__history" *ngIf="history.topic === 'walletCreated' ">
+                you created a wallet with name {{history.name}} of <span class="text-success">{{history.amount | currency:'NGN':'symbol-narrow'}}</span> amount <span class="float-end">--{{(history.date | timeago).includes('second') ? 'Just now' : history.date | timeago }}</span>
+              </div>
+              <div class="text-muted my-3 each__history" *ngIf="history.topic === 'deletedWallet' ">
+                you deleted a wallet with name {{history.name}} of {{history.amount | currency:'NGN':'symbol-narrow'}} amount <span class="float-end ">--{{(history.date | timeago).includes('second') ? 'Just now' : history.date | timeago }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================message================================ -->
+        <div class="message__view" id="message__view">
+          <div class="btn btn-light btn-sm message"><i class="fa fa-bell"></i>Notification ({{userMessage.length ? userMessage.length: ''}})</div>
+          <div class="message__pad">
+           <div *ngFor="let message of userMessage; let i=index">
+            <div *ngIf="message.topic === 'moneyRequest' " class="text-muted my-2 each__message animate__animated animate__zoomInLeft animate__slow">
+              {{message.from}} with account number -{{message.account}} requested {{message.amount | currency:'NGN':'symbol-narrow'}}  from you --<span class="text-muted">{{(message.date | timeago).includes('second') ? 'Just now' : message.date | timeago }}</span> <button class="btn btn-danger btn-sm mx-1" (click)="rejectMoneyRequest(message, i)">Reject</button> <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#transfer" (click)="acceptMoneyRequest(message, i)">Accept</button>
+            </div>
+            <div *ngIf="message.topic === 'transferRequestRejected' " class="text-muted my-2  each__message animate__animated animate__zoomInLeft animate__slow">
+              Your transfer request to {{message.from}} with account number -{{message.account}} at {{message.timeOfRequest | timeago}} was rejected  --{{(message.date | timeago).includes('second') ? 'Just now' : message.date | timeago }}<button class="btn btn-danger btn-sm mx-1" (click)="removeNotice(message, i)">OK</button> 
+            </div>
+            <div *ngIf="message.topic === 'transferRequestRejected' " class="text-muted my-2  each__message animate__animated animate__zoomInLeft animate__slow">
+              Your transfer request to {{message.from}} with account number -{{message.account}} at {{message.timeOfRequest | timeago}} was rejected  --{{(message.date | timeago).includes('second') ? 'Just now' : message.date | timeago }}<button class="btn btn-danger btn-sm mx-1" (click)="removeNotice(message, i)">OK</button> 
+            </div>
+           </div>    
+          </div>
+        </div>
+      </div>
+      <!-- ============================================HISTORY END====================================== -->
+
+
+
+      <!--wallet Modal -->
+      <div class="modal fade" id="example">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center"> Create New Wallet</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body my-4">
+              <div class="alert alert-sm alert-danger" *ngIf="error">{{error}}  <div class="float-end alert-delete" (click)="removeAlert()"><i class="fa fa-times"></i></div></div>
+              <div class="alert alert-sm alert-success" *ngIf="success">{{success}}</div>
+              <input type="text" class="form-control my-3" [(ngModel)]="walletName" placeholder="enter wallet name">
+              <input type="number" class="form-control my-3" [(ngModel)]="walletAmount" placeholder="enter amount">
+              <input type="password" class="form-control my-3" [(ngModel)]="walletPassword" placeholder="confirm password">
+              <button class="btn btn-sm btn-success" (click)="createWallet()">create Wallet</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- =============transfer modal================ -->
+
+      <div class="modal fade" id="transfer">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center"> Transfer Money</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body my-4">
+              <div class="alert alert-sm alert-danger" *ngIf="error">{{error}}  <div class="float-end alert-delete" (click)="removeAlert()"><i class="fa fa-times"></i></div></div>
+              <div class="alert alert-sm alert-success" *ngIf="success">{{success}}</div>
+              <input type="number" class="form-control my-3"  [(ngModel)]="tacctInput" placeholder="enter account number">
+              <input type="number" class="form-control my-3" [(ngModel)]="tamountInput" placeholder="enter amount">
+              <input type="password" class="form-control my-3" [(ngModel)]="tpasswordInput" placeholder="confirm password">
+              <button class="btn btn-sm btn-success" (click)="transfer()">Transfer</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ========================= deposit modal ===================== -->
+      <div class="modal fade" id="deposit">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center"> Deposit Money</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body my-4">
+              <div class="alert alert-sm alert-danger" *ngIf="error">{{error}}  <div class="float-end alert-delete" (click)="removeAlert()"><i class="fa fa-times"></i></div></div>
+              <div class="alert alert-sm alert-success" *ngIf="success">{{success}}</div>
+              <input type="number" class="form-control my-3" [(ngModel)]="dacctInput" placeholder="enter your account number">
+              <input type="number" class="form-control my-3" [(ngModel)]="damountInput" placeholder="enter amount">
+              <input type="password" class="form-control my-3" [(ngModel)]="dpasswordInput" placeholder="confirm password">
+              <button class="btn btn-sm btn-success" (click)="deposit()">Deposit</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!--request Modal -->
+       <div class="modal fade" id="request">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center"> Request Money</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body my-4">
+              <div class="alert alert-sm alert-danger" *ngIf="error">{{error}}  <div class="float-end alert-delete" (click)="removeAlert()"><i class="fa fa-times"></i></div></div>
+              <div class="alert alert-sm alert-success" *ngIf="success">{{success}}</div>
+
+              <div id="head__search">
+                <i class="fa fa-search" (click)="search()"></i>
+                <input type="text" placeholder="search for user" (keyup)="default()" class="header__input" [(ngModel)]="searchInput">
+              </div>
+
+              <div id="users__view" class="mx-2 my-5">
+                <div class="eachUser mx-1" (click)="snapRequest(user)" *ngFor="let user of otherUser; let i =index">
+                  <a  class="user__card" title="{{user.balance | currency:'NGN':'symbol-narrow'}}"><i class="fa fa-user-circle"></i></a>
+                  <div>{{user.username}}</div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <input type="number" class="form-control form-control-sm" [(ngModel)]="acctInput" placeholder="enter account number">
+                  <input type="number" class="my-1 form-control form-control-sm" [(ngModel)]="amountInput" placeholder="enter amount">
+                </div>
+                <div class="col-6">
+                  <input type="password" class="form-control form-control-sm" [(ngModel)]="passwordInput" placeholder="confirm password">
+                  <button class="my-1 btn btn-sm btn-success" (click)="requestMoney()">Request Money</button>
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
